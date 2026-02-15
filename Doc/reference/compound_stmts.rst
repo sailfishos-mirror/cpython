@@ -154,7 +154,7 @@ The :keyword:`for` statement is used to iterate over the elements of a sequence
 (such as a string, tuple or list) or other iterable object:
 
 .. productionlist:: python-grammar
-   for_stmt: "for" `target_list` "in" `starred_list` ":" `suite`
+   for_stmt: "for" `target_list` "in" `!starred_list` ":" `suite`
            : ["else" ":" `suite`]
 
 The ``starred_list`` expression is evaluated once; it should yield an
@@ -608,9 +608,9 @@ The match statement is used for pattern matching.  Syntax:
 
 .. productionlist:: python-grammar
    match_stmt: 'match' `subject_expr` ":" NEWLINE INDENT `case_block`+ DEDENT
-   subject_expr: `star_named_expression` "," `star_named_expressions`?
-               : | `named_expression`
-   case_block: 'case' `patterns` [`guard`] ":" `block`
+   subject_expr: `!star_named_expression` "," `!star_named_expressions`?
+               : | `!named_expression`
+   case_block: 'case' `patterns` [`guard`] ":" `!block`
 
 .. note::
    This section uses single quotes to denote
@@ -699,7 +699,7 @@ Guards
 .. index:: ! guard
 
 .. productionlist:: python-grammar
-   guard: "if" `named_expression`
+   guard: "if" `!named_expression`
 
 A ``guard`` (which is part of the ``case``) must succeed for code inside
 the ``case`` block to execute.  It takes the form: :keyword:`if` followed by an
@@ -844,7 +844,7 @@ A literal pattern corresponds to most
    literal_pattern: `signed_number`
                   : | `signed_number` "+" NUMBER
                   : | `signed_number` "-" NUMBER
-                  : | `strings`
+                  : | `!strings`
                   : | "None"
                   : | "True"
                   : | "False"
@@ -1013,8 +1013,8 @@ subject value:
       items, as for a fixed-length sequence.
 
    .. note:: The length of the subject sequence is obtained via
-      :func:`len` (i.e. via the :meth:`__len__` protocol).  This length may be
-      cached by the interpreter in a similar manner as
+      :func:`len` (i.e. via the :meth:`~object.__len__` protocol).
+      This length may be cached by the interpreter in a similar manner as
       :ref:`value patterns <value-patterns>`.
 
 
