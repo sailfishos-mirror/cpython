@@ -4938,13 +4938,13 @@ Widget classes
       containing *child*.
       *option* may be any value allowed by :meth:`paneconfigure`.
 
-   .. method:: paneconfig(tagOrId, cnf=None, **kw)
+   .. method:: paneconfig(child, cnf=None, **kw)
       :no-typesetting:
 
-   .. method:: paneconfigure(tagOrId, cnf=None, **kw)
+   .. method:: paneconfigure(child, cnf=None, **kw)
 
       Query or modify the management options of the pane containing the widget
-      *tagOrId*.
+      *child*.
       With no options, it returns a dictionary describing all of the available
       options for the pane; given a single option name as a string, it returns
       a description of that one option; otherwise it sets the given options.
@@ -4958,6 +4958,10 @@ Widget classes
       and *stretch* (how extra space is allocated to the pane: one of
       ``'always'``, ``'first'``, ``'last'``, ``'middle'`` or ``'never'``).
       :meth:`paneconfig` is an alias of :meth:`!paneconfigure`.
+
+      .. deprecated-removed:: next 3.18
+         The first parameter was renamed from *tagOrId* to *child*.
+         The old name is still accepted as a keyword argument.
 
    .. method:: identify(x, y)
 
