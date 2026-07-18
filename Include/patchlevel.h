@@ -27,7 +27,7 @@
 #define PY_RELEASE_SERIAL       4
 
 /* Version as a string */
-#define PY_VERSION              "3.15.0b4"
+#define PY_VERSION              "3.15.0b4+dev"
 /*--end constants--*/
 
 
